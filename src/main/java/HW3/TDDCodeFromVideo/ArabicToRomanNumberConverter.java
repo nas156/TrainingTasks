@@ -5,7 +5,17 @@ public class ArabicToRomanNumberConverter {
         boolean noNumber = arabicNumber == 0;
         if (noNumber)
             return getDefaultRomanNumber();
-        return "I";
+
+        return getSimpleRomanNumber(arabicNumber);
+    }
+
+    private String getSimpleRomanNumber(int arabicNumber){
+        String romanNumber = "";
+        while (arabicNumber>=1){
+            romanNumber +="I";
+            arabicNumber--;
+        }
+        return romanNumber;
     }
 
     private String getDefaultRomanNumber(){
