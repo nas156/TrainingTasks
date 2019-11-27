@@ -1,3 +1,5 @@
+package HW3.Test;
+
 import HW3.TDDCodeFromVideo.ArabicToRomanNumberConverter;
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,5 +49,11 @@ public class WhenConvertArabicNumberToRoman {
     public void Convert_8_To_VIII(){
         String romanNumber = convertToRoman(8);
         Assert.assertEquals("VIII", romanNumber);
+    }
+
+    @Test
+    public void Convert_4_To_IV(){
+        String romanNumber = convertToRoman(4);
+        Assert.assertEquals("IV", romanNumber);
     }
 }

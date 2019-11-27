@@ -1,3 +1,5 @@
+package HW3.Test;
+
 import HW3.RewritedGame.Model;
 import org.junit.Assert;
 import org.junit.BeforeClass;
