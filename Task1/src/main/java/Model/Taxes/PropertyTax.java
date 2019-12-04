@@ -1,23 +1,22 @@
 package Model.Taxes;
 
-public class PropertyTax extends Tax {
-    private int propertyCost;
-    private String nameOfProperty;
+import Model.User.Property;
 
-    public PropertyTax(int mainIncomePerYear, int numberOfChildren, int propertyCost, String nameOfProperty) {
+public class PropertyTax extends Tax {
+    private Property property;
+
+    public PropertyTax(int mainIncomePerYear, int numberOfChildren, Property property) {
         super(mainIncomePerYear, numberOfChildren);
-        this.propertyCost = propertyCost;
-        this.nameOfProperty = nameOfProperty;
+        this.property = property;
     }
 
     @Override
     protected double countGeneralTax() {
-        return propertyCost * 0.17;
+        return property.getCost() * 0.017;
     }
 
     protected double countLowIncomeExemptionPercent() {
-        int mainIncome = getMainIncomePerYear();
-        if (mainIncome < 4700)
+        if (getMainIncomePerYear() < 30000)
             return 0.9;
         else
             return 1;
@@ -38,7 +37,7 @@ public class PropertyTax extends Tax {
         if (o == null || getClass() != o.getClass()) return false;
         if (!(super.equals(o))) return false;
         PropertyTax propertyTax = (PropertyTax) o;
-        return this.propertyCost == propertyTax.propertyCost && this.nameOfProperty.equals(propertyTax.nameOfProperty);
+        return this.property.equals(propertyTax.property);
     }
 
     @Override
@@ -49,10 +48,11 @@ public class PropertyTax extends Tax {
 
     @Override
     public String toString() {
-        return "PropertyTax for " + nameOfProperty + ": "+ super.toString();
+        return "PropertyTax for " + property + ": "+ super.toString();
     }
 
-    public int getPropertyCost() {
-        return propertyCost;
+    public int getPropertyCost(){
+        return property.getCost();
     }
+
 }
