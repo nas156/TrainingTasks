@@ -10,12 +10,12 @@ public class IncomeTax extends Tax {
 
     @Override
     protected double countGeneralTax() {
-        return super.countGeneralTax() + getExtraIncomePerYear() * 0.08;
+        return super.countGeneralTax() + (getExtraIncomePerYear() * 0.08);
     }
 
     @Override
     public void countTaxToPay() {
-        this.taxToPay = countGeneralTax() * countChildrenExemptionPercent();
+        this.taxToPay = this.countGeneralTax() * super.countChildrenExemptionPercent();
     }
 
 

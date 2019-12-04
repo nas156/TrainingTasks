@@ -3,7 +3,7 @@ package Model.Taxes;
 public class Tax {
     private int mainIncomePerYear;
     private int numberOfChildren;
-    protected double taxToPay;
+    protected double taxToPay=0;
 
     public Tax(int mainWorkIncome, int numberOfChildren) {
         this.mainIncomePerYear = mainWorkIncome;
@@ -42,7 +42,7 @@ public class Tax {
 
     @Override
     public String toString(){
-        return "you have to pay" + this.getTaxToPay();
+        return String.format("%,.2f", getTaxToPay()) + "\n";
     }
 
     public int getNumberOfChildren() {
