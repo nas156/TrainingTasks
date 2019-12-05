@@ -1,12 +1,16 @@
 package Model.User;
 
-public class User {
+/**
+ * Represents a personal information for calculating taxes
+ * @author nas156
+ */
+public class UserTaxAccount {
     private int mainIncomePerYear;
     private int numberOfChildren;
     private int extraIncome;
     private UserProperty[] properties;
 
-    public User(int mainIncomePerYear, int numberOfChildren, int extraIncome, UserProperty... properties) {
+    public UserTaxAccount(int mainIncomePerYear, int numberOfChildren, int extraIncome, UserProperty... properties) {
         this.mainIncomePerYear = mainIncomePerYear;
         this.numberOfChildren = numberOfChildren;
         this.extraIncome = extraIncome;

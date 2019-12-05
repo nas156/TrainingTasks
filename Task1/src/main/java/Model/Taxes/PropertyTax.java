@@ -5,6 +5,10 @@ import View.TextConstants;
 
 import java.util.ResourceBundle;
 
+/**
+ * Work with a tax for some person`s property
+ * @author nas156
+ */
 public class PropertyTax extends Tax {
     private UserProperty property;
 

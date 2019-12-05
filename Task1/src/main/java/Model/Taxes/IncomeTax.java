@@ -1,9 +1,11 @@
 package Model.Taxes;
-
 import View.*;
-
 import java.util.ResourceBundle;
 
+/**
+ * Work with a tax for person`s income: main and extra
+ * @author nas156
+ */
 
 public class IncomeTax extends Tax {
     private int extraIncomePerYear;

@@ -4,19 +4,23 @@ import Model.Taxes.IncomeTax;
 import Model.Taxes.PropertyTax;
 import Model.Taxes.Tax;
 import Model.User.UserProperty;
-import Model.User.User;
+import Model.User.UserTaxAccount;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
+/**
+ * Some tool for operation with taxes: output, summarizing, sorting
+ * @author nas156
+ */
 public class PersonalTaxRecorder {
     private Tax[] taxes;
-    private User user;
+    private UserTaxAccount user;
     private int counter = 0;
     private double fullTaxToPay = 0;
 
-    public PersonalTaxRecorder(User user){
+    public PersonalTaxRecorder(UserTaxAccount user){
         this.user = user;
         taxes = new Tax[1+user.getNumberOfProperties()];
     }
@@ -48,7 +52,6 @@ public class PersonalTaxRecorder {
 
     @Override
     public String toString(){
-        //StringBuilder res = new StringBuilder("Full tax to pay: " + String.format("%,.2f", this.getFullTaxToPay()) + "\n");
         StringBuilder res = new StringBuilder();
         for (Tax tax: taxes) {
             res.append(tax);
@@ -57,7 +60,6 @@ public class PersonalTaxRecorder {
     }
 
     public String toLocaledString(ResourceBundle bundle){
-        //StringBuilder res = new StringBuilder("Full tax to pay: " + String.format("%,.2f", this.getFullTaxToPay()) + "\n");
         StringBuilder res = new StringBuilder();
         for (Tax tax: taxes) {
             res.append(tax.toLocaledString(bundle));

@@ -4,6 +4,11 @@ import View.TextConstants;
 
 import java.util.ResourceBundle;
 
+/**
+ * Super class for all taxes.
+ * Work with a tax for only person`s main income
+ * @author nas156
+ */
 public class Tax {
     private int mainIncomePerYear;
     private int numberOfChildren;

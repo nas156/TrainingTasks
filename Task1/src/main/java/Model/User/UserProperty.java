@@ -1,6 +1,9 @@
 package Model.User;
 
-
+/**
+ * Storage for some person properties
+ * @author nas156
+ */
 public enum UserProperty {
     CAR(80000), HOUSE(900000), COUNTRYSIDE_HOUSE(700000), COW(5000);
 
@@ -18,5 +21,4 @@ public enum UserProperty {
     public String toString(){
         return name().toLowerCase();
     }
-
 }
