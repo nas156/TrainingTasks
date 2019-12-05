@@ -3,8 +3,12 @@ package Model;
 import Model.Taxes.IncomeTax;
 import Model.Taxes.PropertyTax;
 import Model.Taxes.Tax;
-import Model.User.Property;
+import Model.User.UserProperty;
 import Model.User.User;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.ResourceBundle;
 
 public class PersonalTaxRecorder {
     private Tax[] taxes;
@@ -23,7 +27,7 @@ public class PersonalTaxRecorder {
 
     private void addPropertyTax(){
         if(user.getNumberOfProperties()!=0){
-            for (Property property:user.getProperties()) {
+            for (UserProperty property:user.getProperties()) {
                 taxes[counter++] = new PropertyTax(user.getMainIncomePerYear(), user.getNumberOfChildren(), property);
             }
         }
@@ -44,11 +48,24 @@ public class PersonalTaxRecorder {
 
     @Override
     public String toString(){
-        StringBuilder res = new StringBuilder("Full tax to pay: " + String.format("%,.2f", this.getFullTaxToPay()) + "\n");
+        //StringBuilder res = new StringBuilder("Full tax to pay: " + String.format("%,.2f", this.getFullTaxToPay()) + "\n");
+        StringBuilder res = new StringBuilder();
         for (Tax tax: taxes) {
             res.append(tax);
         }
         return res.toString();
     }
 
+    public String toLocaledString(ResourceBundle bundle){
+        //StringBuilder res = new StringBuilder("Full tax to pay: " + String.format("%,.2f", this.getFullTaxToPay()) + "\n");
+        StringBuilder res = new StringBuilder();
+        for (Tax tax: taxes) {
+            res.append(tax.toLocaledString(bundle));
+        }
+        return res.toString();
+    }
+
+    public void sortTaxesByValue(){
+        Arrays.sort(taxes, Comparator.comparing(Tax::getTaxToPay));
+    }
 }

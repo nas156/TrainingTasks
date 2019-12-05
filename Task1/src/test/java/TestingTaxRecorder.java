@@ -1,5 +1,5 @@
 import Model.PersonalTaxRecorder;
-import Model.User.Property;
+import Model.User.UserProperty;
 import Model.User.User;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -11,7 +11,7 @@ public class TestingTaxRecorder {
 
     @BeforeClass
     public static void runner() {
-        user = new User(70000, 3, 8000, Property.values());
+        user = new User(70000, 3, 8000, UserProperty.values());
         personalTaxRecorder = new PersonalTaxRecorder(user);
     }
 

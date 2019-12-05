@@ -1,9 +1,13 @@
 package Model.Taxes;
 
+import View.TextConstants;
+
+import java.util.ResourceBundle;
+
 public class Tax {
     private int mainIncomePerYear;
     private int numberOfChildren;
-    protected double taxToPay=0;
+    protected double taxToPay = 0;
 
     public Tax(int mainWorkIncome, int numberOfChildren) {
         this.mainIncomePerYear = mainWorkIncome;
@@ -15,10 +19,11 @@ public class Tax {
     }
 
     protected double countChildrenExemptionPercent() {
+        if (numberOfChildren >= 7) return 0.7;
         return 1 - getNumberOfChildren() * 0.05;
     }
 
-    public void countTaxToPay(){
+    public void countTaxToPay() {
         this.taxToPay = countGeneralTax() * countChildrenExemptionPercent();
     }
 
@@ -41,8 +46,12 @@ public class Tax {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("%,.2f", getTaxToPay()) + "\n";
+    }
+
+    public String toLocaledString(ResourceBundle bundle){
+        return bundle.getString(TextConstants.MESSAGE_ABOUT_CURRENCY) + String.format("%,.2f", getTaxToPay()) + "\n";
     }
 
     public int getNumberOfChildren() {
@@ -53,8 +62,8 @@ public class Tax {
         return this.mainIncomePerYear;
     }
 
-    public double getTaxToPay(){
-        if (taxToPay == 0){
+    public double getTaxToPay() {
+        if (taxToPay == 0) {
             this.countTaxToPay();
         }
         return this.taxToPay;

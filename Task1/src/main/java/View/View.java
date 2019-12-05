@@ -10,7 +10,7 @@ public class View {
             ResourceBundle.getBundle(
                     MESSAGES_BUNDLE_NAME,
                     new Locale("ua", "UA"));
-                    //new Locale("en"))
+                    //new Locale("en"));
 
     public String concatenateString(String... strings){
         StringBuilder resultString = new StringBuilder();
@@ -20,12 +20,12 @@ public class View {
         return resultString.toString();
     }
 
-    public void printMessage(String message){
-        System.out.println(message);
+    public void printMessage(Object message){
+        System.out.print(message);
     }
 
-    public void printLocaleMessage(String message){
-        printMessage(bundle.getString(message));
+    public String getLocaledMessage(String message){
+        return bundle.getString(message);
     }
 
 }

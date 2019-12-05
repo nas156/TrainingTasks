@@ -1,5 +1,10 @@
 package Model.Taxes;
 
+import View.*;
+
+import java.util.ResourceBundle;
+
+
 public class IncomeTax extends Tax {
     private int extraIncomePerYear;
 
@@ -30,13 +35,16 @@ public class IncomeTax extends Tax {
 
     @Override
     public int hashCode() {
-        int result = super.hashCode() * 31 + this.extraIncomePerYear;
-        return result;
+        return super.hashCode() * 31 + this.extraIncomePerYear;
     }
 
     @Override
     public String toString() {
         return "Income Tax: " + super.toString();
+    }
+
+    public String toLocaledString(ResourceBundle bundle){
+        return bundle.getString(TextConstants.MESSAGE_ABOUT_INCOME_TAX) + super.toLocaledString(bundle);
     }
 
     public int getExtraIncomePerYear() {

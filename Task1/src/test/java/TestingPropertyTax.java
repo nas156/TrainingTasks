@@ -1,5 +1,5 @@
 import Model.Taxes.PropertyTax;
-import Model.User.Property;
+import Model.User.UserProperty;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -8,7 +8,7 @@ public class TestingPropertyTax {
     static PropertyTax propertyTax;
     @BeforeClass
     public static void runner(){
-        propertyTax = new PropertyTax(3700,0, Property.CAR);
+        propertyTax = new PropertyTax(3700,0, UserProperty.CAR);
     }
 
     @Test
@@ -20,13 +20,13 @@ public class TestingPropertyTax {
 
     @Test
     public void equalsTestForTrue(){
-        PropertyTax propertyTax1 = new PropertyTax(3700,0,Property.CAR);
+        PropertyTax propertyTax1 = new PropertyTax(3700,0, UserProperty.CAR);
         Assert.assertTrue(propertyTax1.equals(propertyTax));
     }
 
     @Test
     public void equalsTestForFalse(){
-        PropertyTax propertyTax1 = new PropertyTax(3700,1, Property.CAR);
+        PropertyTax propertyTax1 = new PropertyTax(3700,1, UserProperty.CAR);
         Assert.assertFalse(propertyTax1.equals(propertyTax));
     }
 

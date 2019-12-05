@@ -1,11 +1,14 @@
 package Model.Taxes;
 
-import Model.User.Property;
+import Model.User.UserProperty;
+import View.TextConstants;
+
+import java.util.ResourceBundle;
 
 public class PropertyTax extends Tax {
-    private Property property;
+    private UserProperty property;
 
-    public PropertyTax(int mainIncomePerYear, int numberOfChildren, Property property) {
+    public PropertyTax(int mainIncomePerYear, int numberOfChildren, UserProperty property) {
         super(mainIncomePerYear, numberOfChildren);
         this.property = property;
     }
@@ -42,14 +45,18 @@ public class PropertyTax extends Tax {
 
     @Override
     public int hashCode() {
-        int result = super.hashCode() * 51 + this.getPropertyCost();
-        return result;
+        return super.hashCode() * 51 + this.getPropertyCost();
     }
 
     @Override
     public String toString() {
-        return "PropertyTax for " + property + ": "+ super.toString();
+        return "Property tax for " + property + ": "+ super.toString();
     }
+
+    public String toLocaledString(ResourceBundle bundle){
+        return bundle.getString(TextConstants.MESSAGE_ABOUT_PROPERTY_TAX) + bundle.getString(property.name()) + super.toLocaledString(bundle);
+    }
+
 
     public int getPropertyCost(){
         return property.getCost();

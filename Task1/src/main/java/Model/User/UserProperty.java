@@ -1,11 +1,12 @@
 package Model.User;
 
-public enum Property {
+
+public enum UserProperty {
     CAR(80000), HOUSE(900000), COUNTRYSIDE_HOUSE(700000), COW(5000);
 
     private int cost;
 
-    Property(int cost){
+    UserProperty(int cost){
         this.cost = cost;
     }
 
@@ -17,4 +18,5 @@ public enum Property {
     public String toString(){
         return name().toLowerCase();
     }
+
 }
